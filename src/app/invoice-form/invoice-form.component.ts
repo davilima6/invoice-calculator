@@ -8,11 +8,13 @@ import { Invoice } from '../data/invoice';
 })
 export class InvoiceFormComponent implements OnInit {
 
-  invoice: Invoice = {
+  originalInvoice: Invoice = {
     customer: null,
     start: null,
     end: null
   }
+
+  invoice: Invoice = {...this.originalInvoice};
 
   constructor() { }
 
