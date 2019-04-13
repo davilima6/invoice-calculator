@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Invoice } from './invoice';
 
 const API = {
@@ -13,7 +13,6 @@ const API = {
   providedIn: 'root'
 })
 export class DataService {
-
   constructor(private http: HttpClient) { }
 
   getCustomers() : Observable<any> {
@@ -25,7 +24,7 @@ export class DataService {
       params: {
         customer_id: invoice.customer_id,
         start_date: invoice.start_date,
-        end_date: invoice.end_date,
+        end_date: invoice.end_date
       }
     });
   }

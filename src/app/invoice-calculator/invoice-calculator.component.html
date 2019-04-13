@@ -1,3 +1,2 @@
-<p>
-  invoice-calculator works!
-</p>
+<app-invoice-form (invoicer)="onInvoice($event)"></app-invoice-form>
+<app-invoice [invoice]="invoice" [orders]="orders"></app-invoice>
