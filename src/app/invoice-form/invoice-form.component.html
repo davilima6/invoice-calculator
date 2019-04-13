@@ -1,7 +1,7 @@
-<form #form="ngForm" class="invoice-form">
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="invoice-form">
   <div class="form-group">
     <label for="customer" class="label">Customer: </label>
-    <select id="customer" name="customer" class="form-control" [(ngModel)]="invoice.customer">
+    <select id="customer" name="customer" class="form-control" [(ngModel)]="invoice.customer" required>
       <option>1</option>
       <option>2</option>
     </select>
@@ -9,12 +9,12 @@
 
   <div class="form-group">
     <label for="start" title="(inclusive)" class="label">Start date: </label>
-    <input type="date" id="start" name="start" [(ngModel)]="invoice.start">
+    <input type="date" id="start" name="start" [(ngModel)]="invoice.start" required>
   </div>
 
   <div class="form-group">
     <label for="end" title="(inclusive)" class="label">End date: </label>
-    <input type="date" id="end" name="end" [(ngModel)]="invoice.end">
+    <input type="date" id="end" name="end" [(ngModel)]="invoice.end" required>
   </div>
 
   <div class="form-group">
