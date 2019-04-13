@@ -1,8 +1,12 @@
+import { Item } from './item';
+
 export interface Order {
-    recipientName: string,
-    recipientAddress: string,
-    totalPrice: string,
-    date: string,
-    items: string[],
-    deliveryDetails: string
+    recipient: {
+        name: string,
+        email: string
+    },
+    total_price: number,
+    created_at: string,
+    items: Item[],
+    delivery: string
 }
