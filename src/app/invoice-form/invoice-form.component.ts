@@ -11,9 +11,9 @@ import { DataService } from '../data/data.service';
 export class InvoiceFormComponent implements OnInit {
 
   originalInvoice: Invoice = {
-    customer: null,
-    start: null,
-    end: null
+    customer_id: null,
+    start_date: null,
+    end_date: null
   }
 
   invoice: Invoice = {...this.originalInvoice};
@@ -28,7 +28,7 @@ export class InvoiceFormComponent implements OnInit {
       return;
     }
 
-    this.dataService.postInvoiceForm(this.invoice).subscribe(
+    this.dataService.getCustomerOrders(this.invoice).subscribe(
       result => console.log('success: ', result),
       error => console.log('error: ', error)
     );

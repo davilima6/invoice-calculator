@@ -1,5 +1,5 @@
 export interface Invoice {
-    customer: String,
-    start: Date,
-    end: Date
+    customer_id: string,
+    start_date: string,
+    end_date: string
 }
