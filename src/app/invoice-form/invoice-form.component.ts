@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Invoice } from '../data/invoice';
+import { DataService } from '../data/data.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -16,8 +18,19 @@ export class InvoiceFormComponent implements OnInit {
 
   invoice: Invoice = {...this.originalInvoice};
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      return;
+    }
+
+    this.dataService.postInvoiceForm(this.invoice).subscribe(
+      result => console.log('success: ', result),
+      error => console.log('error: ', error)
+    );
   }
 }
