@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Invoice } from '../data/invoice';
 
 @Component({
   selector: 'app-invoice-form',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceFormComponent implements OnInit {
 
+  invoice: Invoice = {
+    customer: null,
+    start: null,
+    end: null
+  }
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }
