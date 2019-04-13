@@ -1,0 +1,20 @@
+table {
+    margin: 1em 0;
+}
+
+tr:nth-child(odd) {
+    background: #f6f6f6;
+}
+
+tr:first-child {
+    font-variant: small-caps;
+}
+
+th:not(:last-child) {
+    padding-right: 1em;
+}
+
+th,
+td {
+    padding: 0 0.5em;
+}
