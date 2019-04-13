@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoiceFormComponent } from './invoice-form/invoice-form.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { InvoiceCalculatorComponent } from './invoice-calculator/invoice-calculator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvoiceFormComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    InvoiceCalculatorComponent
   ],
   imports: [
     BrowserModule,
