@@ -21,7 +21,7 @@ export class DataService {
   }
 
   getCustomerOrders(invoice: Invoice) : Observable<any> {
-    return this.http.get(`${API.baseUrl}/${API.orders}`, {
+    return this.http.get(`${API.baseUrl}/${API.orders}/${API.customers}`, {
       params: {
         customer_id: invoice.customer_id,
         start_date: invoice.start_date,
