@@ -1,3 +1,25 @@
-<p>
-  invoice works!
-</p>
+<table *ngIf="orders">
+  <tr>
+    <th>Recipient</th>
+    <th>Total price</th>
+    <th>Date</th>
+    <th>Items</th>
+    <th>Delivery Details</th>
+  </tr>
+  <tr *ngFor="let order of orders">
+    <td>{{ order.recipient.name }} ({{ order.recipient.email }})</td>
+    <td>{{ order.total_price }} {{ order.items[0]?.total_price.currency }}</td>
+    <td>{{ order.created_at | date }}</td>
+    <td>
+      <ul>
+        <li *ngFor="let item of order.items">{{ item.name }} (Qty: {{ item.quantity }}) </li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Courier: {{ order.delivery.courier }}</li>
+        <li>Method: {{ order.delivery.method }}</li>
+      </ul>
+    </td>
+  </tr>
+</table>

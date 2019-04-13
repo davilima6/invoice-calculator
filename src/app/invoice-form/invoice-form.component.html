@@ -2,7 +2,7 @@
   <div class="form-group">
     <label for="customer" class="label">Customer: </label>
     <select id="customer" name="customer" class="form-control" [(ngModel)]="invoice.customer_id" required class="select">
-      <option *ngFor="let customer of customers | async" [value]="customer.id">{{ customer.name }}</option>
+      <option *ngFor="let customer of customers" [value]="customer.id" [selected]="invoice.customer_id">{{ customer.name }}</option>
     </select>
   </div>
 
