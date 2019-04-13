@@ -2,8 +2,7 @@
   <div class="form-group">
     <label for="customer" class="label">Customer: </label>
     <select id="customer" name="customer" class="form-control" [(ngModel)]="invoice.customer_id" required>
-      <option>1</option>
-      <option>2</option>
+      <option *ngFor="let customer of customers">{{customer.name}}</option>
     </select>
   </div>
 
