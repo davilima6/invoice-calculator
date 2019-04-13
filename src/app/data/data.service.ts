@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Invoice } from './invoice';
 
 const API = {
@@ -13,7 +14,10 @@ const API = {
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(SESSION_STORAGE) private storage: StorageService
+  ) { }
 
   getCustomers() : Observable<any> {
     return this.http.get(`${API.baseUrl}/${API.customers}`);
@@ -27,5 +31,15 @@ export class DataService {
         end_date: invoice.end_date
       }
     });
+  }
+
+  getCache(key) {
+    return this.storage.get(key);
+  }
+
+  setCache(key, value) {
+    this.storage.set(key, value);
+
+    return true;
   }
 }
