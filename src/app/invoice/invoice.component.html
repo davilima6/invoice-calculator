@@ -2,10 +2,10 @@
   <h2>Invoice for {{ invoice.customer_name | json }}</h2>
 
   <ul>
-    <li><strong>Period:</strong> From {{ invoice.start_date }} to {{ invoice.end_date }}</li>
+    <li><strong>Period:</strong> From {{ invoice.start_date | date }} to {{ invoice.end_date | date }}</li>
     <li><strong>Number of days:</strong> {{ invoice.daysNumber }}</li>
     <li><strong>Number of orders:</strong> {{ invoice.ordersNumber }}</li>
-    <li><strong>Total amount:</strong> {{ invoice.amount }} EUR </li>
+    <li><strong>Total amount:</strong> {{ invoice.amount }} {{ orders[0]?.charge_customer.currency }}</li>
   </ul>
 
   <table>
