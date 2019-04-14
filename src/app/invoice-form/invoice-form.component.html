@@ -2,6 +2,7 @@
   <div class="form-group">
     <label for="customer_id" class="label">Customer: </label>
     <select id="customer_id" name="customer_id" class="form-control" [(ngModel)]="invoice.customer_id" required class="select">
+      <option value="" selected="true">Select one</option>
       <option *ngFor="let customer of customers" [value]="customer.id" [selected]="customer.id === invoice.customer_id">{{ customer.name }}</option>
     </select>
   </div>
