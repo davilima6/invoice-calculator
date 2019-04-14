@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Invoice } from '../data/invoice';
 import { Order } from './order';
 
@@ -7,13 +7,11 @@ import { Order } from './order';
   templateUrl: './invoice.component.html',
   styleUrls: ['./invoice.component.scss']
 })
-export class InvoiceComponent implements OnInit, OnChanges {
+export class InvoiceComponent implements OnChanges {
   @Input() invoice: Invoice = null;
   @Input() orders: Order[] = [];
 
   constructor() { }
-
-  ngOnInit() { }
 
   ngOnChanges() {
     if (!this.orders || !this.orders.length) {
@@ -21,9 +19,10 @@ export class InvoiceComponent implements OnInit, OnChanges {
     }
 
     for (const order of this.orders) {
-      for (const item of order.items) {
-        order.total_price = order.items.reduce((acc, next) => acc += Number(next.total_price.amount), 0)
-      }
+      order.total_price = order.items.reduce(
+        (acc, next) => acc += Number(next.total_price.amount),
+        0
+      )
     }
   }
 }
