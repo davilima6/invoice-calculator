@@ -7,13 +7,17 @@
   </div>
 
   <div class="form-group">
-    <label for="start" title="(inclusive)" class="label">Start date: </label>
-    <input type="date" id="start" name="start_date" [(ngModel)]="invoice.start_date" required class="input">
+    <label for="start_date" title="* Inclusive" class="label">Start date: </label>
+    <input type="date" id="start_date" name="start_date" [(ngModel)]="invoice.start_date" required class="input">
   </div>
 
   <div class="form-group">
-    <label for="end" title="(inclusive)" class="label">End date: </label>
-    <input type="date" id="end" name="end_date" [(ngModel)]="invoice.end_date" required class="input">
+    <label for="end_date" title="* Inclusive" class="label">End date: </label>
+    <input type="date" id="end_date" name="end_date" [(ngModel)]="invoice.end_date" required class="input">
+  </div>
+
+  <div *ngIf="form.submitted && !form.valid" class="form-group form-errors">
+    Please make sure to fill all fields.
   </div>
 
   <div class="form-group form-actions">
