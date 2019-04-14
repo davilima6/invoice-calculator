@@ -5,7 +5,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Invoice } from './invoice';
 
 const API = {
-  baseUrl: 'http://private-2a91cb-byrd1.apiary-mock.com',
+  baseUrl: 'https://private-2a91cb-byrd1.apiary-mock.com',
   customers: 'customers',
   orders: 'orders'
 };
