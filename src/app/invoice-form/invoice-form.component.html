@@ -16,8 +16,8 @@
     <input type="date" id="end" name="end_date" [(ngModel)]="invoice.end_date" required class="input">
   </div>
 
-  <div class="form-group">
-    <button type="reset" class="button" (click)="onClear()">Clear</button>
-    <button type="submit" class="button">Generate invoice</button>
+  <div class="form-group form-actions">
+    <button type="reset" class="btn btn-clear" (click)="onClear()">Clear</button>
+    <button type="submit" class="btn btn-submit">Generate invoice</button>
   </div>
 </form>

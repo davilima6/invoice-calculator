@@ -8,10 +8,10 @@ import { Order } from './order';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit, OnChanges {
-  @Input() invoice : Invoice = null;
-  @Input() orders : Order[] = [];
+  @Input() invoice: Invoice = null;
+  @Input() orders: Order[] = [];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() { }
 
