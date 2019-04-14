@@ -39,16 +39,17 @@ export class DataService {
     });
   }
 
-  getCache(key) {
-    return this.storage.get(key);
+  getCache(key: string, defaultValue: any = undefined) {
+    return this.storage.has(key) ? this.storage.get(key) : defaultValue;
   }
 
-  setCache(key, value) {
+  setCache(key: string, value: any) {
     this.storage.set(key, value);
   }
 
   clearCache() {
     this.storage.clear();
+
     return true;
   }
 }
