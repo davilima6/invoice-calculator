@@ -9,7 +9,18 @@ import { Order } from '../invoice/order';
   styleUrls: ['./invoice-calculator.component.scss']
 })
 export class InvoiceCalculatorComponent implements OnInit {
-  invoice : Invoice;
+  originalInvoice: Invoice = {
+    customer_id: null,
+    customer_name: null,
+    start_date: null,
+    end_date: null,
+    daysNumber: null,
+    amount: null,
+    orders: null,
+    ordersNumber: null
+  }
+
+  invoice : Invoice = this.invoice || { ...this.originalInvoice };
   orders : Order[];
 
   constructor(private dataService: DataService) { }
@@ -18,18 +29,19 @@ export class InvoiceCalculatorComponent implements OnInit {
     const cacheKey = `${CACHE_KEYS.base}_${CACHE_KEYS.lastInvoice}`;
 
     this.invoice = this.dataService.getCache(cacheKey);
+    // Setup also orders
     if (this.invoice) {
-      // Setup also orders
       this.onInvoice(this.invoice);
     }
   }
 
-  onInvoice(event) {
-    this.invoice = event;
-    this.orders = this.invoice.orders;
-  }
-
   onClear() {
     this.orders = null;
+    this.dataService.clearCache();
+  }
+
+  onInvoice(event) {
+    this.invoice = event;
+    this.orders = event ? this.invoice.orders : null;
   }
 }
