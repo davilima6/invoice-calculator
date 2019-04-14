@@ -5,8 +5,10 @@
     (clearer)="onClear()">
 </app-invoice-form>
 
-<app-invoice
-    [invoice]="invoice"
-    [orders]="orders"
-    @invoiceAnimation>
-</app-invoice>
+<ng-container *ngIf="orders">
+    <app-invoice
+        [invoice]="invoice"
+        [orders]="orders"
+        @invoiceAnimation>
+    </app-invoice>
+</ng-container>
