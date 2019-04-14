@@ -45,7 +45,10 @@ export class DataService {
 
   setCache(key, value) {
     this.storage.set(key, value);
+  }
 
+  clearCache() {
+    this.storage.clear();
     return true;
   }
 }

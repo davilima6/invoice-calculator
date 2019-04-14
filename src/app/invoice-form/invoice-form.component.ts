@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class InvoiceFormComponent implements OnInit {
   @Output() invoicer: EventEmitter<Invoice> = new EventEmitter();
+  @Output() clearer: EventEmitter<Invoice> = new EventEmitter();
   private cacheKeys: any = {
     customers: `${CACHE_KEYS.base}_${CACHE_KEYS.customers}`,
     invoice: `${CACHE_KEYS.base}_${CACHE_KEYS.lastInvoice}`
@@ -65,5 +66,10 @@ export class InvoiceFormComponent implements OnInit {
       },
       error => console.log('error: ', error)
     );
+  }
+
+  onClear() {
+    this.dataService.clearCache();
+    this.clearer.emit();
   }
 }

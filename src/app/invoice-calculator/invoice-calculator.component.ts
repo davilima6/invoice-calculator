@@ -28,4 +28,8 @@ export class InvoiceCalculatorComponent implements OnInit {
     this.invoice = event;
     this.orders = this.invoice.orders;
   }
+
+  onClear() {
+    this.orders = null;
+  }
 }
