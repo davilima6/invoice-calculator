@@ -10,6 +10,12 @@ const API = {
   orders: 'orders'
 };
 
+export const CACHE_KEYS = {
+  base: 'invoice-calculator',
+  customers: 'customers',
+  lastInvoice: 'lastInvoice'
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,11 +25,11 @@ export class DataService {
     @Inject(SESSION_STORAGE) private storage: StorageService
   ) { }
 
-  getCustomers() : Observable<any> {
+  getCustomers(): Observable<any> {
     return this.http.get(`${API.baseUrl}/${API.customers}`);
   }
 
-  getCustomerOrders(invoice: Invoice) : Observable<any> {
+  getCustomerOrders(invoice: Invoice): Observable<any> {
     return this.http.get(`${API.baseUrl}/${API.orders}/${API.customers}`, {
       params: {
         customer_id: invoice.customer_id,

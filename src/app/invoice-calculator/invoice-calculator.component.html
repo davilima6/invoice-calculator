@@ -1,2 +1,2 @@
-<app-invoice-form (invoicer)="onInvoice($event)"></app-invoice-form>
+<app-invoice-form [invoice]="invoice" (invoicer)="onInvoice($event)"></app-invoice-form>
 <app-invoice [invoice]="invoice" [orders]="orders"></app-invoice>
