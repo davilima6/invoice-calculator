@@ -50,12 +50,20 @@
     }
 
     .btn-submit {
-        cursor: pointer;
         margin-left: auto;
 
-        &:active {
-            &:after {
-                content: '!';
+        &[disabled]:hover {
+            background-color: lightpink;
+            cursor: not-allowed;
+        }
+
+        &:not([disabled]) {
+            cursor: pointer;
+
+            &:active {
+                &:after {
+                    content: '!';
+                }
             }
         }
     }

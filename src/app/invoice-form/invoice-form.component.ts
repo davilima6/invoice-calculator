@@ -10,6 +10,7 @@ import { Customer } from '../data/customer';
   styleUrls: ['./invoice-form.component.scss']
 })
 export class InvoiceFormComponent implements OnInit {
+  @Input() isEnabled: boolean = true;
   @Input() invoice: Invoice;
   @Output() invoicer: EventEmitter<Invoice> = new EventEmitter();
   @Output() clearer: EventEmitter<Invoice> = new EventEmitter();
@@ -51,21 +52,26 @@ export class InvoiceFormComponent implements OnInit {
     return data.reduce((acc, next) => acc += Number(next.charge_customer.total_price), 0);
   }
 
+  updateInvoice(data: any) {
+    this.invoice.orders = data;
+    this.invoice.ordersNumber = data.length;
+    this.invoice.customer_name = this.getCustomerName(this.invoice.customer_id);
+    this.invoice.daysNumber = this.getDaysNumber(this.invoice.end_date, this.invoice.start_date);
+    this.invoice.amount = this.getAmount(data);
+  }
+
   onSubmit(form: NgForm) {
     if (!form.valid) {
       return;
     }
 
+    // Cache partial invoice before processing
     this.dataService.setCache(this.cacheKeys.invoice, this.invoice);
 
     this.dataService.getCustomerOrders(this.invoice).subscribe(
       data => {
-        this.invoice.orders = data;
-        this.invoice.ordersNumber = data.length;
-        this.invoice.customer_name = this.getCustomerName(this.invoice.customer_id);
-        this.invoice.daysNumber = this.getDaysNumber(this.invoice.end_date, this.invoice.start_date);
-        this.invoice.amount = this.getAmount(data);
-
+        this.updateInvoice(data);
+        // Cache full generated invoice
         this.dataService.setCache(this.cacheKeys.invoice, this.invoice);
         this.invoicer.emit(this.invoice);
       },

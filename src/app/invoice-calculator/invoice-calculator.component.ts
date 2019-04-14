@@ -20,8 +20,9 @@ export class InvoiceCalculatorComponent implements OnInit {
     ordersNumber: null
   }
 
-  invoice : Invoice = this.invoice || { ...this.originalInvoice };
-  orders : Order[];
+  isFormEnabled: boolean = true;
+  invoice: Invoice = this.invoice || { ...this.originalInvoice };
+  orders: Order[];
 
   constructor(private dataService: DataService) { }
 
@@ -36,11 +37,13 @@ export class InvoiceCalculatorComponent implements OnInit {
   }
 
   onClear() {
+    this.isFormEnabled = true;
     this.orders = null;
     this.dataService.clearCache();
   }
 
   onInvoice(event) {
+    this.isFormEnabled = false;
     this.invoice = event;
     this.orders = event ? this.invoice.orders : null;
   }

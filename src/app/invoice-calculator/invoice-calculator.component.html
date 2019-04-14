@@ -1,5 +1,6 @@
 <app-invoice-form
     [invoice]="invoice"
+    [isEnabled]="isFormEnabled"
     (invoicer)="onInvoice($event)"
     (clearer)="onClear()">
 </app-invoice-form>
