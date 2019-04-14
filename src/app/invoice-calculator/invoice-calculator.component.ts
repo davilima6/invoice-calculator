@@ -59,7 +59,7 @@ export class InvoiceCalculatorComponent implements OnInit {
     this.dataService.clearCache();
   }
 
-  onInvoice(event) {
+  onInvoice(event: Invoice) {
     this.isFormEnabled = false;
     this.invoice = event;
     this.orders = event ? this.invoice.orders : null;

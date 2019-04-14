@@ -6,7 +6,14 @@ export interface Order {
         email: string
     },
     total_price: number,
+    charge_customer: {
+        amount: string,
+        currency: string
+    },
     created_at: string,
     items: Item[],
-    delivery: string
+    delivery: {
+        courier: string,
+        method: string
+    }
 }

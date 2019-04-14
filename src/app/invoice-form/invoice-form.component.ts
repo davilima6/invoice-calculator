@@ -12,8 +12,8 @@ import { Customer } from '../data/customer';
 export class InvoiceFormComponent implements OnInit {
   @Input() isEnabled: boolean = true;
   @Input() invoice: Invoice;
-  @Output() invoicer: EventEmitter<Invoice> = new EventEmitter();
-  @Output() clearer: EventEmitter<Invoice> = new EventEmitter();
+  @Output() invoicer: EventEmitter<Invoice> = new EventEmitter<Invoice>();
+  @Output() clearer: EventEmitter<Invoice> = new EventEmitter<Invoice>();
   private cacheKeys: any = {
     customers: `${CACHE_KEYS.base}_${CACHE_KEYS.customers}`,
     invoice: `${CACHE_KEYS.base}_${CACHE_KEYS.lastInvoice}`
