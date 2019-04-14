@@ -39,6 +39,18 @@ export class InvoiceFormComponent implements OnInit {
     );
   }
 
+  getCustomerName(id: string) {
+    return this.customers.find(el => el.id === id).name;
+  }
+
+  getDaysNumber(endDate: string, startDate: string) {
+    return Math.floor((Date.parse(endDate) - Date.parse(startDate)) / 86400000) + 1;
+  }
+
+  getAmount(data: any) {
+    return data.reduce((acc, next) => acc += Number(next.charge_customer.total_price), 0);
+  }
+
   onSubmit(form: NgForm) {
     if (!form.valid) {
       return;
@@ -50,9 +62,10 @@ export class InvoiceFormComponent implements OnInit {
       data => {
         this.invoice.orders = data;
         this.invoice.ordersNumber = data.length;
-        this.invoice.daysNumber = Math.floor((Date.parse(this.invoice.end_date) - Date.parse(this.invoice.start_date)) / 86400000) + 1;
-        this.invoice.customer_name = this.customers.find(el => el.id === this.invoice.customer_id).name;
-        this.invoice.amount = data.reduce((acc, next) => acc += Number(next.charge_customer.total_price), 0);
+        this.invoice.customer_name = this.getCustomerName(this.invoice.customer_id);
+        this.invoice.daysNumber = this.getDaysNumber(this.invoice.end_date, this.invoice.start_date);
+        this.invoice.amount = this.getAmount(data);
+
         this.dataService.setCache(this.cacheKeys.invoice, this.invoice);
         this.invoicer.emit(this.invoice);
       },
