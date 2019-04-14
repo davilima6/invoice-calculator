@@ -36,7 +36,7 @@ export class InvoiceFormComponent implements OnInit {
         this.customers = result;
         this.dataService.setCache(this.cacheKeys.customers, result);
       },
-      error => console.log('error: ', error)
+      error => console.error('Error: ', error)
     );
   }
 
@@ -75,7 +75,7 @@ export class InvoiceFormComponent implements OnInit {
         this.dataService.setCache(this.cacheKeys.invoice, this.invoice);
         this.invoicer.emit(this.invoice);
       },
-      error => console.log('error: ', error)
+      error => console.error('Error: ', error)
     );
   }
 
