@@ -5,4 +5,8 @@
     (clearer)="onClear()">
 </app-invoice-form>
 
-<app-invoice [invoice]="invoice" [orders]="orders"></app-invoice>
+<app-invoice
+    [invoice]="invoice"
+    [orders]="orders"
+    @invoiceAnimation>
+</app-invoice>

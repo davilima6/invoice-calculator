@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+
 import { DataService, CACHE_KEYS } from '../data/data.service';
 import { Invoice } from '../data/invoice';
 import { Order } from '../invoice/order';
@@ -6,7 +8,21 @@ import { Order } from '../invoice/order';
 @Component({
   selector: 'app-invoice-calculator',
   templateUrl: './invoice-calculator.component.html',
-  styleUrls: ['./invoice-calculator.component.scss']
+  styleUrls: ['./invoice-calculator.component.scss'],
+  animations: [
+    trigger('invoiceAnimation', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'translateY(-100px)'
+        }),
+        animate('500ms ease-out'), style({
+          opacity: 1,
+          transform: 'translateY(0)'
+        })
+      ])
+    ])
+  ]
 })
 export class InvoiceCalculatorComponent implements OnInit {
   originalInvoice: Invoice = {
@@ -30,6 +46,7 @@ export class InvoiceCalculatorComponent implements OnInit {
     const cacheKey = `${CACHE_KEYS.base}_${CACHE_KEYS.lastInvoice}`;
 
     this.invoice = this.dataService.getCache(cacheKey);
+
     // Setup also orders
     if (this.invoice) {
       this.onInvoice(this.invoice);
