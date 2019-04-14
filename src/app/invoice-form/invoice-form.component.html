@@ -1,19 +1,19 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form">
   <div class="form-group">
-    <label for="customer" class="label">Customer: </label>
-    <select id="customer" name="customer" class="form-control" [(ngModel)]="invoice.customer_id" required class="select">
-      <option *ngFor="let customer of customers" [value]="customer.id" [selected]="invoice.customer_id">{{ customer.name }}</option>
+    <label for="customer_id" class="label">Customer: </label>
+    <select id="customer_id" name="customer_id" class="form-control" [(ngModel)]="invoice.customer_id" required class="select">
+      <option *ngFor="let customer of customers" [value]="customer.id" [selected]="customer.id === invoice.customer_id">{{ customer.name }}</option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="start" title="(inclusive)" class="label">Start date: </label>
-    <input type="date" id="start" name="start" [(ngModel)]="invoice.start_date" required class="input">
+    <input type="date" id="start" name="start_date" [(ngModel)]="invoice.start_date" required class="input">
   </div>
 
   <div class="form-group">
     <label for="end" title="(inclusive)" class="label">End date: </label>
-    <input type="date" id="end" name="end" [(ngModel)]="invoice.end_date" required class="input">
+    <input type="date" id="end" name="end_date" [(ngModel)]="invoice.end_date" required class="input">
   </div>
 
   <div class="form-group">
