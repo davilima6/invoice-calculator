@@ -9,33 +9,40 @@
   </ul>
 
   <table>
-    <tr>
-      <th>Recipient</th>
-      <th>Total price</th>
-      <th>Date</th>
-      <th>Items</th>
-      <th>Delivery Details</th>
-    </tr>
+    <thead>
+      <tr>
+        <th colspan="5">Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Recipient</th>
+        <th>Total price</th>
+        <th>Date</th>
+        <th>Items</th>
+        <th>Delivery Details</th>
+      </tr>
 
-    <tr *ngFor="let order of orders">
-      <td>
-        <a href="mailto:{{ order.recipient.email }}" title="Send an e-mail" class="recipient-email">
-          {{ order.recipient.name }}
-        </a>
-      </td>
-      <td>{{ order.total_price }} {{ order.items[0]?.total_price.currency }}</td>
-      <td>{{ order.created_at | date }}</td>
-      <td>
-        <ul>
-          <li *ngFor="let item of order.items">{{ item.name }} (Qty: {{ item.quantity }}) </li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Courier: {{ order.delivery.courier }}</li>
-          <li>Method: {{ order.delivery.method }}</li>
-        </ul>
-      </td>
-    </tr>
+      <tr *ngFor="let order of orders">
+        <td>
+          <a href="mailto:{{ order.recipient.email }}" title="Send an e-mail" class="recipient-email">
+            {{ order.recipient.name }}
+          </a>
+        </td>
+        <td>{{ order.total_price }} {{ order.items[0]?.total_price.currency }}</td>
+        <td>{{ order.created_at | date }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let item of order.items">{{ item.name }} (Qty: {{ item.quantity }}) </li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Courier: {{ order.delivery.courier }}</li>
+            <li>Method: {{ order.delivery.method }}</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
